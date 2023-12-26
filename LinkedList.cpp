@@ -118,6 +118,27 @@ void searchnode(int data)
     }
     cout<<"\nNode with data="<<s->data<<" is at position "<<p<<"\n";
 }
+void sortlinkedlist()
+{
+    int temp;
+    struct node *current,*next=NULL;
+    current=head;
+    while(current!=NULL)
+    {
+       next=current->next;
+        while(next!=NULL)
+        {
+            if(current->data>next->data)
+            {
+                temp=next->data;
+                next->data=current->data;
+                current->data=temp;
+            }
+            next=next->next;
+        }
+        current=current->next;
+    }
+}
 int main()
 {
   insertbegin(2);
@@ -137,4 +158,12 @@ int main()
   deleteatposition(1);
   print();
   searchnode(5);
+  insertbegin(2);
+  insertbegin(3);
+  insertbegin(5);
+  insertbegin(2);
+  insertbegin(9);
+  print();
+  sortlinkedlist();
+  print();
 }
